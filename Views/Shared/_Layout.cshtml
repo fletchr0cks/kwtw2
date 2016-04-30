@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KOM With The Wind</title>
+   
+    @Scripts.Render("~/bundles/modernizr")
+
+    <script type="text/javascript" src="~/Scripts/indexW.js"></script>
+    <script type="text/javascript" src="~/Scripts/indexD.js"></script>
+    <script type="text/javascript" src="~/Scripts/oauth.js"></script>
+    <script type="text/javascript" src="~/Scripts/moment-with-locales.js"></script>
+    <!---script type="text/javascript" src="~/Scripts/mapsapijs.js"></!--script-->
+    <script type="text/javascript" src="~/Scripts/markerclusterer.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?libraries=geometry"></script>
+    <script type="text/javascript" src="~/Scripts/Chart.js"></script>
+    <script type="text/javascript" src="~/Scripts/justgage.js"></script>
+    <script type="text/javascript" src="~/Scripts/raphael-2.1.4.min.js"></script>
+    <link href="http://fonts.googleapis.com/css?family=Raleway:400,300" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+    <link href="~/Content/bootstrap0.css" rel="stylesheet">
+    <link href="~/Content/main.css" rel="stylesheet">
+    <link href="~/Content/font-style.css" rel="stylesheet">
+    <link href="~/Content/flexslider.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/Content/font-awesome.css">
+    <!--script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></!--script-->
+
+   
+
+    <script type="text/javascript">
+
+
+        $(document).ready(function () {
+      //     alert("ready")
+         //   $.getScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyBVDErdMAzGhcjVpaqCP4rDpCe7r6WcDog&sensor=false');
+           // https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=geometry
+            checkData();
+            initBtns();
+            //checkConnection();
+            
+        });
+        $(function () {
+            $(".dropdown-menu li a").click(function () {
+                var selText = $(this).text();
+                $(this).parents('.btn-group').find('.dropdown-toggle').html(selText + ' <span class="caret"></span>');
+            });
+
+        });
+
+
+        $(function () {
+
+            function isOnLine() {
+                return navigator.onLine;
+            }
+
+            function reportOnlineStatus() {
+                var status = $("#onlineStatus");
+
+                if (isOnLine()) {
+                    status.text("Online");
+                    status.
+                        removeClass("offline").
+                        addClass("online");
+                }
+                else {
+                    status.text("Offline");
+                    status.
+                        removeClass("online").
+                        addClass("offline");
+                }
+            }
+
+
+
+            window.addEventListener("online", function (e) {
+                reportOnlineStatus();
+                //saveToServer();
+            }, true);
+
+            window.addEventListener("offline", function (e) {
+                reportOnlineStatus();
+            }, true);
+
+            if (isOnLine()) {
+                // saveToServer();
+            }
+            // showCustomer();
+            reportOnlineStatus();
+
+            // drawSpacer();
+
+        });
+
+
+
+        </script>
+
+</head>
+<body>
+
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
