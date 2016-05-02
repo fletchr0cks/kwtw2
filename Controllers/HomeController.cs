@@ -46,16 +46,17 @@ namespace kwtwsite.Controllers
                             {
                                 UserID = (from u in DataContext.Users where e.UserID == u.StravaID select u.Firstname.Substring(0, 1).ToLower()),
                                 Wspd = e.Windspeed,
-                                Name = (from u in DataContext.Segments where e.SegID == u.SegmentID select u.SegmentName),
-                                Latlng = (from u in DataContext.Segments where e.SegID == u.SegmentID select u.latlng),
-                                Points = (from u in DataContext.Segments where e.SegID == u.SegmentID select u.Polyline),
+                                Name = e.SegName,
+                                Points = e.Polyline,
                                 SegID = e.SegID,
                                 Stars = e.Stars,
                                 TS_pretty = e.TS_pretty,
                                 Location = e.latlng,
                                 Timest = Convert.ToDateTime(e.Timestamp).ToLongDateString()//.ToShortTimeString()
-                                
+
                             };
+
+      
 
             return Json(new { topw = allw.Take(10) }, JsonRequestBehavior.AllowGet);
 
@@ -113,7 +114,24 @@ namespace kwtwsite.Controllers
             return Json(new { segs = favs }, JsonRequestBehavior.AllowGet);
 
         }
+        public void SavePmt(int StravaID, string payID)
+        {
 
+            var DataContext = new DataClasses1DataContext();
+
+            //update
+            var sc = db.Users
+            .Where(s => s.StravaID == StravaID)
+            .First();
+
+            sc.PaymentID = payID;
+
+            sc.PaymentDate = Convert.ToDateTime(DateTime.Now);
+            db.SubmitChanges();
+
+
+
+        }
         public void SaveUser(string firstname, string lastname, int StravaID, int NumAct, int NumSeg)
         {
 

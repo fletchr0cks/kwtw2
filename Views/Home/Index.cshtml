@@ -28,13 +28,13 @@
             <ul class="dropdown-menu">
                 <li><a href="#" onclick="getAct('stars')">My Starred Segments</a></li>
                 <li><a href="#" onclick="getFriends()">Mine + Friend's KOMs</a></li>
-                <li><a href="#" onclick="getNearby()">Segments Nearby</a></li>
+                <li><a href="#" onclick="getNearby()">Map</a></li>
                 <li><a href="#" onclick="Settings()">Settings</a></li>
                 <li><a href="#" onclick="showCmty()">Community</a></li>
             </ul>
 
         </div>
-
+        <div id="locIcon"style="display:inline-block;color:#fff;padding-left:5px" onclick="checkLoc()"><i class="fa fa-dot-circle-o"></i></div>
     </div>
 
     <div id="pic_header" class="profile" style="display:none"></div>
@@ -208,37 +208,14 @@
                                 </ul>
                             </div>
                         </div>
-                        <h3 id="loading-indicator">Loading</h3>
-                        <div id="in-app-purchase-list">
-                            <div id="consumable1-purchase"></div>
-                            <div id="nonconsumable1-purchase"></div>
-                            <div id="subscription1-purchase"></div>
-                            <div id="nonconsumablenonhosted1-purchase"></div>
-                            <div id="nonconsumablehosted1-purchase" class="ios-only"></div>
-                        </div>
+                        <div style="height:20px">&nbsp;</div>
 
-
-                        <!-- Are we subscribers? -->
-                        <div id="subscriber-info" class="section">Loading subscription status...</div>
-
-                        <!-- Non-consumable non-(provider-)hosted content download -->
-                        <div id="non-consumable-non-hosted-content-download" class="section" style="display:none"></div>
-
-                        <!-- Non-consumable Apple-hosted content download -->
-                        <div id="non-consumable-hosted-content-download" class="section ios-only" style="display:none"></div>
-
-                        <div class="section">
-                            <!-- Button to access the full version feature: initially hidden -->
-                            <div id="access-full-version-button" class="button" style="display:none">Access the awesome Full Version feature</div>
-
-                            <!-- Button to access the full version feature: initially hidden -->
-                            <div id="refresh-button" class="button" style="display:none">Refresh purchases</div>
-
-                        </div>
-
-                        <!-- app.log will add stuff in here -->
-                        <div id="log" class="section" />
-
+                        <button type="button" class="btn btn-primary btn-sm" onclick="listSub()">List</button>
+                        <div style="height:20px">&nbsp;</div>
+                        <button type="button" class="btn btn-primary btn-sm" onclick="purchaseProduct()">Buy 1 Year</button>
+                        <div style="height:20px">&nbsp;</div>
+                        <button type="button" class="btn btn-primary btn-sm" onclick="restorePurchases()">Restore</button>
+                        <div id="pmsg"></div>
                     </div>
 
                 </div>
