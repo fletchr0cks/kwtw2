@@ -41,6 +41,7 @@ namespace kwtwsite.Controllers
         {
             var DataContext = new DataClasses1DataContext();
             var allw = from e in DataContext.TopWeathers
+                       where e.Timestamp >= DateTime.Now.AddDays(-7)
                        orderby e.Stars descending, e.Timestamp descending
                        select new
                        {
