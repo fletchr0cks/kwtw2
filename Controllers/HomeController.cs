@@ -20,6 +20,11 @@ namespace kwtwsite.Controllers
             return View();
         }
 
+        public ActionResult Index()
+        {
+            return View();
+        }
+
         public ActionResult Social()
         {
             ViewBag.Message = "Your application description page.";
@@ -41,7 +46,7 @@ namespace kwtwsite.Controllers
         {
             var DataContext = new DataClasses1DataContext();
             var allw = from e in DataContext.TopWeathers
-                       where e.Timestamp >= DateTime.Now.AddDays(-7)
+                       where e.Timestamp >= DateTime.Now.AddDays(-7) 
                        orderby e.Stars descending, e.Timestamp descending
                        select new
                        {
@@ -70,7 +75,7 @@ namespace kwtwsite.Controllers
                      where e.StravaID == StravaID
                      select new
                      {
-                         FirstLogin = e.FirstLogin,
+                         FirstLogin = Convert.ToDateTime(e.FirstLogin).ToLongDateString(),
                          PaymentID = e.PaymentID,
                          PaymentDate = Convert.ToDateTime(e.PaymentDate).ToLongDateString()
                      };
@@ -78,6 +83,7 @@ namespace kwtwsite.Controllers
             return Json(new { ustatus = pr }, JsonRequestBehavior.AllowGet);
 
         }
+
         public JsonResult AllSegs()
         {
             var DataContext = new DataClasses1DataContext();
@@ -136,17 +142,17 @@ namespace kwtwsite.Controllers
             var DataContext = new DataClasses1DataContext();
 
             //update
-            var sc = db.Users
-            .Where(s => s.StravaID == StravaID)
-            .First();
+                var sc = db.Users
+                .Where(s => s.StravaID == StravaID)
+                .First();
 
-            sc.PaymentID = payID;
+                sc.PaymentID = payID;
 
             sc.PaymentDate = Convert.ToDateTime(DateTime.Now);
-            db.SubmitChanges();
+                db.SubmitChanges();
 
 
-
+          
         }
         public void SaveUser(string firstname, string lastname, int StravaID, int NumAct, int NumSeg)
         {
@@ -191,31 +197,18 @@ namespace kwtwsite.Controllers
 
         }
 
-        public void SaveTopWeather(int UserID, int segID, int wspd, string loc, int stars, string epoch, string timestamp)
+        public void SaveTopWeather(int UserID, int segID, string segName, string poly, int wspd, string loc, int stars, string epoch, string timestamp)
         {
 
             var DataContext = new DataClasses1DataContext();
-
-            var userct = from u in DataContext.TopWeathers
-                         where u.SegID == segID
-                         where u.epoch == epoch
-                         select u;
-
-            var priv = from u in DataContext.Segments
-                         where u.SegmentID == segID
-                         where u.PrivateSeg == 1
-                         select u;
-
-
-            if (userct.Count() == 0 && priv.Count() == 0)
-            {
-
 
                 TopWeather wnew = new Models.TopWeather();
                 wnew.UserID = UserID;
                 wnew.SegID = segID;
                 wnew.Stars = stars;
                 wnew.latlng = loc;
+            wnew.SegName = segName;
+            wnew.Polyline = poly;
                 wnew.Windspeed = wspd;
                 wnew.epoch = epoch;
                 wnew.Timestamp = DateTime.Now;
@@ -223,9 +216,6 @@ namespace kwtwsite.Controllers
                 datarepo.Add(wnew);
                 datarepo.Save();
 
-
-
-            }
 
 
         }
