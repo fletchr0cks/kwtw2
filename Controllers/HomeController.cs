@@ -41,27 +41,42 @@ namespace kwtwsite.Controllers
         {
             var DataContext = new DataClasses1DataContext();
             var allw = from e in DataContext.TopWeathers
-                            orderby e.Stars descending, e.Timestamp descending
-                            select new
-                            {
-                                UserID = (from u in DataContext.Users where e.UserID == u.StravaID select u.Firstname.Substring(0, 1).ToLower()),
-                                Wspd = e.Windspeed,
-                                Name = e.SegName,
-                                Points = e.Polyline,
-                                SegID = e.SegID,
-                                Stars = e.Stars,
-                                TS_pretty = e.TS_pretty,
-                                Location = e.latlng,
-                                Timest = Convert.ToDateTime(e.Timestamp).ToLongDateString()//.ToShortTimeString()
+                       orderby e.Stars descending, e.Timestamp descending
+                       select new
+                       {
+                           UserID = (from u in DataContext.Users where e.UserID == u.StravaID select u.Firstname.Substring(0, 1).ToLower()),
+                           Wspd = e.Windspeed,
+                           Name = e.SegName,
+                           Points = e.Polyline,
+                           SegID = e.SegID,
+                           Stars = e.Stars,
+                           TS_pretty = e.TS_pretty,
+                           Location = e.latlng,
+                           Timest = Convert.ToDateTime(e.Timestamp).ToLongDateString()//.ToShortTimeString()
 
-                            };
+                       };
 
-      
+
 
             return Json(new { topw = allw.Take(10) }, JsonRequestBehavior.AllowGet);
 
         }
 
+        public JsonResult Ustatus(int StravaID)
+        {
+            var DataContext = new DataClasses1DataContext();
+            var pr = from e in DataContext.Users
+                     where e.StravaID == StravaID
+                     select new
+                     {
+                         FirstLogin = e.FirstLogin,
+                         PaymentID = e.PaymentID,
+                         PaymentDate = Convert.ToDateTime(e.PaymentDate).ToLongDateString()
+                     };
+
+            return Json(new { ustatus = pr }, JsonRequestBehavior.AllowGet);
+
+        }
         public JsonResult AllSegs()
         {
             var DataContext = new DataClasses1DataContext();
