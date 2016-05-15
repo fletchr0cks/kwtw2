@@ -76,8 +76,7 @@ namespace kwtwsite.Controllers
                      select new
                      {
                          FirstLogin = Convert.ToDateTime(e.FirstLogin).ToLongDateString(),
-                         PaymentID = e.PaymentID,
-                         PaymentDate = Convert.ToDateTime(e.PaymentDate).ToLongDateString()
+                         
                      };
 
             return Json(new { ustatus = pr }, JsonRequestBehavior.AllowGet);
@@ -202,13 +201,23 @@ namespace kwtwsite.Controllers
 
             var DataContext = new DataClasses1DataContext();
 
+            var allw = from e in DataContext.TopWeathers
+                       where e.SegID == segID
+                       where e.Timestamp >= DateTime.Now.AddHours(-1)
+                       select e;
+            if (allw.Count() > 0)
+            {
+
+            }
+            else {
+
                 TopWeather wnew = new Models.TopWeather();
                 wnew.UserID = UserID;
                 wnew.SegID = segID;
                 wnew.Stars = stars;
                 wnew.latlng = loc;
-            wnew.SegName = segName;
-            wnew.Polyline = poly;
+                wnew.SegName = segName;
+                wnew.Polyline = poly;
                 wnew.Windspeed = wspd;
                 wnew.epoch = epoch;
                 wnew.Timestamp = DateTime.Now;
@@ -216,7 +225,7 @@ namespace kwtwsite.Controllers
                 datarepo.Add(wnew);
                 datarepo.Save();
 
-
+            }
 
         }
 
