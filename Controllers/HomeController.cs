@@ -20,9 +20,9 @@ namespace kwtwsite.Controllers
             return View();
         }
 
-        public ActionResult Index()
+        public ActionResult Here()
         {
-            return View();
+            return View("Index");
         }
 
         public ActionResult Social()
@@ -75,8 +75,9 @@ namespace kwtwsite.Controllers
                      where e.StravaID == StravaID
                      select new
                      {
-                         FirstLogin = Convert.ToDateTime(e.FirstLogin).ToLongDateString(),
-                         
+                         FirstLogin = Convert.ToDateTime(e.FirstLogin).Day + "/" + Convert.ToDateTime(e.FirstLogin).Month + "/" + Convert.ToDateTime(e.FirstLogin).Year,
+                         Credits = e.Credits
+
                      };
 
             return Json(new { ustatus = pr }, JsonRequestBehavior.AllowGet);
@@ -185,13 +186,37 @@ namespace kwtwsite.Controllers
                 unew.StravaID = StravaID;
                 unew.Activities = NumAct;
                 unew.Segments = NumSeg;
+                unew.Credits = 5;
                 unew.FirstLogin = DateTime.Now;
                 datarepo.Add(unew);
                 datarepo.Save();
 
 
             }
+            
 
+        }
+
+        public void SaveCredit(int StravaID, int cred)
+        {
+          
+            var DataContext = new DataClasses1DataContext();
+
+            var user = from u in DataContext.Users
+                         where u.StravaID == StravaID
+                         select u;
+            var credit = user.First().Credits;
+            //Convert.ToInt32(credit.First());
+            var newcredit = credit - cred;
+
+            //update
+            var sc = db.Users
+                .Where(s => s.StravaID == StravaID)
+                .First();
+
+                sc.Credits = newcredit;
+               
+                db.SubmitChanges();
 
 
         }
