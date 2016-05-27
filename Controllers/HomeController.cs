@@ -186,7 +186,7 @@ namespace kwtwsite.Controllers
                 unew.StravaID = StravaID;
                 unew.Activities = NumAct;
                 unew.Segments = NumSeg;
-                unew.Credits = 5;
+                unew.Credits = 15;
                 unew.FirstLogin = DateTime.Now;
                 datarepo.Add(unew);
                 datarepo.Save();
