@@ -42,6 +42,32 @@ namespace kwtwsite.Controllers
             return View("Beta", data);
         }
 
+        public ActionResult Dash()
+        {
+            var DataContext = new DataClasses1DataContext();
+            var data1 = from u in DataContext.Users
+                        where u.PaymentID != null
+                       select u;
+
+            var data2 = from u in DataContext.Users
+                        where u.PaymentID == null
+                        select u;
+
+            var data3 = from u in DataContext.Users
+                        select u;
+
+            var paid = data1.Count();
+            var trial = data2.Count();
+            var total = data3.Count();
+            ViewData["paid"] = paid;
+            ViewData["trial"] = trial;
+            ViewData["total"] = total;
+            ViewData["time"] = DateTime.Now.ToLongDateString() + " " + DateTime.Now.ToLongTimeString();
+
+            return View();
+        }
+
+
         public JsonResult TopW()
         {
             var DataContext = new DataClasses1DataContext();
@@ -154,6 +180,10 @@ namespace kwtwsite.Controllers
 
           
         }
+
+
+
+
         public void SaveUser(string firstname, string lastname, int StravaID, int NumAct, int NumSeg)
         {
 
