@@ -25,6 +25,11 @@ namespace kwtwsite.Controllers
             return View("Index");
         }
 
+        public ActionResult Privacy()
+        {
+            return View();
+        }
+
         public ActionResult Social()
         {
             ViewBag.Message = "Your application description page.";

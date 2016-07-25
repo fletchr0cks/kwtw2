@@ -96,17 +96,39 @@ td.alnright { text-align: right; }
     -webkit-border-radius: 150px;
 	-moz-border-radius: 150px;
 	border: 1px solid #2fb4c8;
-	margin-left:10px;
+	margin-left:0px;
 }
 
 .circular_pfl {
-	width: 35px;
-	height: 35px;
+	width: 26px;
+	height: 26px;
 	border-radius: 50%;
 	overflow: hidden;
     -webkit-border-radius: 150px;
 	-moz-border-radius: 150px;
 	border: 1px solid #2fb4c8;
+	margin-left:10px;
+}
+
+.circular_pfl_on {
+	width: 26px;
+	height: 26px;
+	border-radius: 50%;
+	overflow: hidden;
+    -webkit-border-radius: 150px;
+	-moz-border-radius: 150px;
+	border: 2px solid #00a541;
+	margin-left:10px;
+}
+
+.circular_pfl_off {
+	width: 26px;
+	height: 26px;
+	border-radius: 50%;
+	overflow: hidden;
+    -webkit-border-radius: 150px;
+	-moz-border-radius: 150px;
+	border: 2px solid #DC143C;
 	margin-left:10px;
 }
 
@@ -178,13 +200,17 @@ td.alnright { text-align: right; }
   	border: 0;
   	border-top: 1px solid #151515;
   	
-	margin-top:1px;
+	margin-top:0px;
+}
+
+.row_h {
+
 }
 
 .dash-unit h1 {
 	font-family: 'Raleway', sans-serif;
 	font-weight:300;
-	font-size: 20px;
+	font-size: 14px;
 	line-height: 2px;
 	letter-spacing: 0px;
 	color: #ffffff;
@@ -195,13 +221,11 @@ td.alnright { text-align: right; }
 }
 
 .dash-unit h2 {
-	font-family: 'Open Sans', sans-serif;
-	font-weight: bold;
-	font-size: 30px;
-	line-height: 26px;
+	font-size: 18px;
+	line-height: 2px;
 	letter-spacing: 0px;
-	color: #ffffff;
-	padding-top:10px;
+	color: rgba(220, 20, 60, 0.87);
+	padding-top:12px;
 	padding-left:5px;
 	margin-top:2px;
 	text-align:center;
@@ -209,17 +233,16 @@ td.alnright { text-align: right; }
 
 
 .dash-unit h3 {
-	font-weight:300;
-	font-size: 15px;
+	font-weight:800;
+	font-size: 12px;
 	line-height: 2px;
 	letter-spacing: 0px;
-	color: #b2c831;
+	color: #8bc7eb;
 	padding-top:10px;
 	padding-left:5px;
 	margin-top:2px;
 	text-align:center;
 }
-
 
 .dash-unit p {
 	font-size: 12px;
@@ -641,21 +664,34 @@ digiclock {
 
 }    
 
-.status {
+.status_on {
     position: absolute;
-    right: 100px;
-    color:orange;
+    right: 99px;
+    color: #00a541;
     z-index: 300;
-    top: 5px
-
+    top: 34px;
+    font-size: 8px
 }    
+
+.status_off {
+    position: absolute;
+    right: 99px;
+    color: #DC143C;
+    z-index: 300;
+    top: 34px;
+    font-size: 8px
+}    
+
+.online {
+
+}
 
 
 .profile {
     position: absolute;
     right: 98px;
     z-index: 300;
-    top: 5px
+    top: 8px
 
 }    
 

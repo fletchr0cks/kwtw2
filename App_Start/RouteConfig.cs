@@ -13,6 +13,13 @@ namespace kwtwsite
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+
+            routes.MapRoute(
+                name: "Privacy",
+                url: "Privacy",
+                defaults: new { controller = "Home", action = "Privacy", id = UrlParameter.Optional }
+            );
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
