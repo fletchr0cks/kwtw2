@@ -382,12 +382,7 @@ img {
   border-radius: 50%;
 }
 
-hr {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  border: 0;
-  border-top: 1px solid #eeeeee;
-}
+
 
 .sr-only {
   position: absolute;
@@ -522,8 +517,9 @@ h2,
 
 h3,
 .h3 {
-  font-size: 24px;
+  font-size: 14px;
 }
+
 
 h4,
 .h4 {
@@ -758,10 +754,12 @@ pre code {
 }
 
 .container {
-  padding-right: 10px;
-  padding-left: 10px;
-
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
 }
+
 
 .container:before,
 .container:after {
@@ -1406,7 +1404,19 @@ pre code {
 
 table {
   max-width: 100%;
-  background-color: transparent;
+  background-color: rgba(80, 80, 80, 0.1);
+}
+
+.un_sel {
+
+}
+
+.sel {
+  background-color: rgba(115, 216, 0, 0.12);
+}
+
+.sel_p {
+  background-color: rgba(255, 0, 0, 0.21);
 }
 
 th {
@@ -1414,7 +1424,7 @@ th {
 }
 
 .table {
-  width: 100%;
+  width:100%;
   margin-bottom: 20px;
 }
 
@@ -1424,10 +1434,10 @@ th {
 .table thead > tr > td,
 .table tbody > tr > td,
 .table tfoot > tr > td {
-  padding: 8px;
+  padding: 4px;
   line-height: 1.428571429;
   vertical-align: top;
-  border-top: 1px solid #dddddd;
+  border-top: 1px solid #333;
 }
 
 .table thead > tr > th {
@@ -1481,7 +1491,7 @@ th {
 
 .table-striped > tbody > tr:nth-child(odd) > td,
 .table-striped > tbody > tr:nth-child(odd) > th {
-  background-color: #f9f9f9;
+  background-color: rgba(5, 5, 5, 0.2);
 }
 
 .table-hover > tbody > tr:hover > td,
@@ -2091,8 +2101,8 @@ fieldset[disabled] .btn-default.active {
 
 .btn-primary {
   color: #ffffff;
-  background-color: #428bca;
-  border-color: #357ebd;
+  background-color: rgba(32, 32, 32, 0.54);
+  border-color: rgb(0, 48, 92);
 }
 
 .btn-primary:hover,
@@ -2214,8 +2224,8 @@ fieldset[disabled] .btn-danger.active {
 
 .btn-success {
   color: #ffffff;
-  background-color: #5cb85c;
-  border-color: #4cae4c;
+  background-color: rgba(32, 32, 32, 0.54);
+  border-color: rgb(6, 48, 92)
 }
 
 .btn-success:hover,
@@ -2224,8 +2234,8 @@ fieldset[disabled] .btn-danger.active {
 .btn-success.active,
 .open .dropdown-toggle.btn-success {
   color: #ffffff;
-  background-color: #47a447;
-  border-color: #398439;
+  background-color: rgb(32, 32, 32);
+  border-color: rgb(6, 48, 92)
 }
 
 .btn-success:active,
