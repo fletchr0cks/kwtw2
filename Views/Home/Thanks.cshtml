@@ -9,33 +9,64 @@
     <title>KOM With The Wind</title>
     <link href="~/Content/bootstrap0.css" rel="stylesheet">
     <link href="~/Content/main.css" rel="stylesheet">
+    <link href="~/Content/sss.css" rel="stylesheet" type="text/css" media="all">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="~/Scripts/sss.min.js"></script>
+    <script>
+jQuery(function($) {
+         
+      $('.slider').sss({
+          slideShow: true, // Set to false to prevent SSS from automatically animating.
+          startOn: 0, // Slide to display first. Uses array notation (0 = first slide).
+          transition: 400, // Length (in milliseconds) of the fade transition.
+          speed: 10000, // Slideshow speed in milliseconds.
+          showNav: true // Set to false to hide navigation arrows.
+      });
+      });
+    </script>
 </head>
+
 <body>
+
     <div class="container">
         <div class="cont">
-            <img style="padding-bottom:5px;width:100px;height:auto;" src="~/Content/logo_app1_lg.png" />
+            <img style="padding-bottom:5px;width:100px;height:auto;" src="~/Content/logo_app1.png" />
         </div>
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-lg-6">
-                <div class="dash-unit" style="height:400px">
+                <div class="cont" style="height:400px">
+                    <div class="slider">
+                        <img src="~/Content/002.png" />
+                        <img src="~/Content/003.png" />
+                        <img src="~/Content/004.png" />
+                        <img src="~/Content/005.png" />
+                        <img src="~/Content/006.png" />
+                    </div>
+
+                </div>
+                <div class="dash-unit" style="height:300px">
                     <dtitle>Available for Android and iOS</dtitle>
                     <hr>
-                    <p></p>
-                </div>
+                   
+                    </div>
                 <div class="dash-unit" style="height:350px">
                     <dtitle>Social</dtitle>
                     <hr>
                     <div class="cont">
                         <a href="https://twitter.com/komwiththewind" class="twitter-follow-button" data-show-count="false">Follow @@komwiththewind</a>
                         <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+                        </div>
+                        <a class="twitter-timeline" data-theme="dark" href="https://twitter.com/komwiththewind">Tweets by komwiththewind</a>
+                        <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
                     </div>
-                    <a class="twitter-timeline" data-theme="dark" href="https://twitter.com/komwiththewind">Tweets by komwiththewind</a>
-                    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-                </div>
-                <div class="dash-unit" style="height:100px">
+                <div class="dash-unit" style="height:200px">
                     <dtitle>Get in Touch</dtitle>
                     <hr>
-                    <p>admin@komwiththewind.com</p>
+                    <div class="cont">
+                        <div>We're based in Scotland where we love cycling and have no shortage of great scenary and wind!<br/>Do get in touch with Miriam with any questions.</div>
+                        <img class="circular_user" src="~/Content/pr.png" />
+                        <div style="padding-top:5px">admin@komwiththewind.com</div>
+                    </div>
                 </div>
                 </div>
             <div class="col-xs-12 col-sm-12 col-lg-6">
