@@ -9,7 +9,8 @@
 }
 
 .ssslide {
-	width: 70%;
+	width: auto;
+    height:385px;
 	margin: 0;
 	padding: 0;
 	display: none;
