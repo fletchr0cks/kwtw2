@@ -13,6 +13,11 @@ namespace kwtwsite
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.MapRoute(
+              name: "Terms",
+              url: "Terms",
+              defaults: new { controller = "Home", action = "Terms", id = UrlParameter.Optional }
+          );
 
             routes.MapRoute(
                 name: "Privacy",
@@ -21,10 +26,10 @@ namespace kwtwsite
             );
 
             routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Thanks", id = UrlParameter.Optional }
-            );
+               name: "Default",
+               url: "{controller}/{action}/{id}",
+               defaults: new { controller = "Home", action = "Thanks", id = UrlParameter.Optional }
+           );
         }
     }
 }

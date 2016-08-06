@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using kwtwsite.Models;
+using Microsoft.Web;
 using System.Web.Mvc.Ajax;
 
 
@@ -20,14 +21,19 @@ namespace kwtwsite.Controllers
             return View();
         }
 
-        public ActionResult Here()
-        {
-            return View("Index");
-        }
-
         public ActionResult Privacy()
         {
             return View();
+        }
+
+        public ActionResult Terms()
+        {
+            return View();
+        }
+
+        public ActionResult Here()
+        {
+            return View("Index");
         }
 
         public ActionResult Social()
