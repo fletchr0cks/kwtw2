@@ -10,11 +10,11 @@
     <meta name="viewport" content="width=device-width" />
     <link href="/Content/bootstrap0.css" rel="stylesheet">
     <link href="/Content/main.css" rel="stylesheet">
-    <meta http-equiv="refresh" content="3600"> 
+    <meta http-equiv="refresh" content="30000"> 
     <title>Dashboard</title>
 </head>
-<body>
-    <div class="container">
+<body style="background-color:#1f1f1f;">
+    <div style="background-color:#1f1f1f;height:600px">
 
             <div class="cont">
                 <div id="bigLogoimg">
@@ -24,23 +24,22 @@
                 <div style="font-size:16px;color:skyblue">@ViewData["time"]</div>
                 <div style="height:20px"></div>
                 <div style="font-size:80px;color:white">@ViewData["total"]</div>
-            
-                <div style="position:absolute;left:32px;top:270px;text-align:center">
-                    <div style="font-size:22px;color:skyblue">Trial</div>
-                    <div style="font-size:48px;color:white">@ViewData["trial"]</div>
-                </div>
+                <div style="background-color:black;height:auto">
+                    <div style="position:absolute;left:32px;top:270px;text-align:center;background-color:#1f1f1f;height:auto">
+                        <div style="font-size:22px;color:skyblue">Trial</div>
+                        <div style="font-size:48px;color:white">@ViewData["trial"]</div>
+                    </div>
 
-                <div style="position:absolute;right:32px;top:270px;text-align:center">
-                    <div style="font-size:22px;color:skyblue">Paid</div>
-                    <div style="font-size:48px;color:white">@ViewData["paid"]</div>
+                    <div style="position:absolute;right:32px;top:270px;text-align:center;background-color:#1f1f1f;height:auto">
+                        <div style="font-size:22px;color:skyblue">Paid</div>
+                        <div style="font-size:48px;color:white">@ViewData["paid"]</div>
+                        <div style="font-size:22px;color:skyblue">1 Month: @ViewData["1m"]</div>
+                        <div style="font-size:22px;color:skyblue">1 Year: @ViewData["1y"]</div>
+                        <div style="font-size:22px;color:skyblue">Android: @ViewData["android"]</div>
+                        <div style="font-size:22px;color:skyblue">iOS: @ViewData["ios"]</div>
+                    </div>
                 </div>
-                <table>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                </table>
-
+                
             </div>
         </div>
 </body>
