@@ -67,12 +67,45 @@ namespace kwtwsite.Controllers
             var data3 = from u in DataContext.Users
                         select u;
 
+            string[] dataarr = (from u in DataContext.Users
+                        where u.PaymentID != null
+                        select u.PaymentID).ToArray();
+            int onemonth = 0;
+            int oneyear = 0;
+            int ios = 0;
+            int android = 0;
+            foreach (string str in dataarr)
+            {
+                if (str.IndexOf("sub1monthl1") > 0)
+                {
+                    onemonth++;
+                }
+                if (str.IndexOf("sub1yearl3") > 0)
+                {
+                    oneyear++;
+                }
+                if (str.IndexOf("ios") > 0)
+                {
+                    ios++;
+                }
+                if (str.IndexOf("ios") == -1)
+                {
+                    android++;
+                }
+
+
+            }
+
             var paid = data1.Count();
             var trial = data2.Count();
             var total = data3.Count();
             ViewData["paid"] = paid;
             ViewData["trial"] = trial;
             ViewData["total"] = total;
+            ViewData["1m"] = onemonth;
+            ViewData["1y"] = oneyear;
+            ViewData["ios"] = ios;
+            ViewData["android"] = android;
             ViewData["time"] = DateTime.Now.ToLongDateString() + " " + DateTime.Now.ToLongTimeString();
 
             return View();
@@ -262,7 +295,7 @@ namespace kwtwsite.Controllers
 
         }
 
-        public void SaveTopWeather(int UserID, int segID, string segName, string poly, int wspd, string loc, int stars, string epoch, string timestamp)
+        public void SaveTopWeather(int UserID, int segID, int wspd, string loc, int stars, string epoch, string timestamp)
         {
 
             var DataContext = new DataClasses1DataContext();
@@ -282,8 +315,8 @@ namespace kwtwsite.Controllers
                 wnew.SegID = segID;
                 wnew.Stars = stars;
                 wnew.latlng = loc;
-                wnew.SegName = segName;
-                wnew.Polyline = poly;
+                //wnew.SegName = segName;
+                //wnew.Polyline = poly;
                 wnew.Windspeed = wspd;
                 wnew.epoch = epoch;
                 wnew.Timestamp = DateTime.Now;
