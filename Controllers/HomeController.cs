@@ -53,6 +53,11 @@ namespace kwtwsite.Controllers
             return View("Beta", data);
         }
 
+        public ActionResult Tweet()
+        {
+            return View();
+        }
+
         public ActionResult Dash()
         {
             var DataContext = new DataClasses1DataContext();
