@@ -47,10 +47,18 @@
                      //   var latlng1 = JSON.stringify(seg.Latlng[0]);
                     //    var latlng = latlng1.split(',');
                       //  var lat = latlng[0];
-                      //  var lng = latlng[1];
+                        //  var lng = latlng[1];
+                        var dtext;
+                        if (stars <= 3) {
+                            dtext = "Good"
+                        }
+                        var st = "★✰✰";
+                        if (stars > 3) {
+                            dtext = "High"
+                        }
                         var PID = seg.SegID
-                       
-                        midhtml = midhtml + "<div>" + timestamp + "</div><div id=\"tweet" + n + "\">Best user-sourced segment of the day: " + tsa[0] + tsa[1] + " local time in " + loc + ". Star Rating: " + stars + " Wind Speed: " + wspd + "kph. #strava #KOMWithTheWind</div>" +
+                        //Good chance of KOM: 5:00PM local time in Alenquer, Portugal. Star Rating: 3/5 Wind Speed: 21kph. As found by a #KOMWithTheWind user. #Strava
+                        midhtml = midhtml + "<div>" + timestamp + "</div><div id=\"tweet" + n + "\">" + dtext + " chance of KOM: " + tsa[0] + tsa[1] + " local time in " + loc + ". Star Rating: " + stars + "/5. Wind Speed: " + wspd + "kph. As found by a #KOMWithTheWind user. #Strava</div>" +
                             "<button onclick=\"tweetIt('" + n + "')\">Tweet</button><div style=\"height:20px\"></div>";
                         n++
                     })

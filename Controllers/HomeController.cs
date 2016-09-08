@@ -75,6 +75,29 @@ namespace kwtwsite.Controllers
             string[] dataarr = (from u in DataContext.Users
                         where u.PaymentID != null
                         select u.PaymentID).ToArray();
+
+            var exp = from e in DataContext.Users
+                      where e.FirstLogin < DateTime.Now.AddDays(-14)
+                      //orderby e.Stars descending, e.Timestamp descending
+                      select e;
+
+            string[] exparr = (from e in DataContext.Users
+                               where e.FirstLogin < DateTime.Now.AddDays(-14) && e.PaymentID == null
+                               select e.StravaID.ToString()).ToArray();
+            var ect = 0;
+            foreach (string id in exparr)
+            {
+                var ct = from u in DataContext.TopWeathers
+                         where u.UserID.ToString() == id && u.Timestamp > DateTime.Now.AddDays(-14)
+                         select u;
+                
+                if (ct.Count() > 0)
+                {
+                    ect++;
+                }
+            }
+
+
             int onemonth = 0;
             int oneyear = 0;
             int ios = 0;
@@ -110,18 +133,32 @@ namespace kwtwsite.Controllers
             ViewData["1m"] = onemonth;
             ViewData["1y"] = oneyear;
             ViewData["ios"] = ios;
+            ViewData["exp"] = exp.Count();
+            ViewData["ect"] = ect;
             ViewData["android"] = android;
             ViewData["time"] = DateTime.Now.ToLongDateString() + " " + DateTime.Now.ToLongTimeString();
 
             return View();
         }
 
+        public JsonResult Expired()
+        {
+            var DataContext = new DataClasses1DataContext();
+            var exp = from e in DataContext.Users
+                      where e.FirstLogin > DateTime.Now.AddDays(-14)
+                      //orderby e.Stars descending, e.Timestamp descending
+                      select e;
+
+
+
+            return Json(new { exp = exp.Count() }, JsonRequestBehavior.AllowGet);
+        }
 
         public JsonResult TopW()
         {
             var DataContext = new DataClasses1DataContext();
             var allw = from e in DataContext.TopWeathers
-                       where e.Timestamp >= DateTime.Now.AddDays(-7) 
+                       where e.Timestamp > DateTime.Now.AddDays(-2) 
                        orderby e.Stars descending, e.Timestamp descending
                        select new
                        {
@@ -140,6 +177,7 @@ namespace kwtwsite.Controllers
 
 
             return Json(new { topw = allw.Take(10) }, JsonRequestBehavior.AllowGet);
+        
 
         }
 
