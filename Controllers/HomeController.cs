@@ -181,11 +181,12 @@ namespace kwtwsite.Controllers
 
         }
 
-        public JsonResult AllW()
+        public JsonResult AllW(int stars)
         {
             var DataContext = new DataClasses1DataContext();
             var allw = from e in DataContext.TopWeathers
-                       //where e.Timestamp > DateTime.Now.AddDays(-2)
+                       where e.Timestamp > DateTime.Now.AddDays(-10)
+                       where e.Stars == stars
                        orderby e.Stars descending, e.Timestamp descending
                        select new
                        {

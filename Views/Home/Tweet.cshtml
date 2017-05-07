@@ -15,11 +15,16 @@
     <title>Tweet</title>
     <script type="text/javascript">
 
-        window.onload = getWindiest("1");
+      //  window.onload = getWindiest("1");
+     //   document.getElementById("Go").onclick = function fun() {
+       //     alert("hello");
+         //   getWindiest();
 
-        function getWindiest(daysago) {
+        function getWindiest() {
+            var stars = document.getElementById('stars_id').value
             var midhtml;
             var n
+    //        alert(stars);
             midhtml = "";
             var seg_loc_data = {
                 points: []
@@ -28,7 +33,7 @@
             $.ajax({
                 type: "GET",
                 url: "/Home/TopW",
-                //data: "dayosag=" + daysago,
+                data: "stars=" + stars,
                 dataType: "json",
                 timeout: 6000,
                 success: function (parsed_json) {
@@ -88,8 +93,8 @@
     </script>
 </head>
 <body style="background-color:#1f1f1f;padding:20px">
-
-
+    <input name="searchTxt" type="text" id="stars_id" />
+    <button onclick="getWindiest()">Go</button>
     <div id="com_table" style="font-size:14px;color:white">
     </div>
 </body>
