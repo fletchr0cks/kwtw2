@@ -181,6 +181,33 @@ namespace kwtwsite.Controllers
 
         }
 
+        public JsonResult AllW()
+        {
+            var DataContext = new DataClasses1DataContext();
+            var allw = from e in DataContext.TopWeathers
+                       //where e.Timestamp > DateTime.Now.AddDays(-2)
+                       orderby e.Stars descending, e.Timestamp descending
+                       select new
+                       {
+                           UserID = (from u in DataContext.Users where e.UserID == u.StravaID select u.Firstname.Substring(0, 1).ToLower()),
+                           Wspd = e.Windspeed,
+                           Name = e.SegName,
+                           Points = e.Polyline,
+                           SegID = e.SegID,
+                           Stars = e.Stars,
+                           TS_pretty = e.TS_pretty,
+                           Location = e.latlng,
+                           Timest = Convert.ToDateTime(e.Timestamp).ToLongDateString()//.ToShortTimeString()
+
+                       };
+
+
+
+            return Json(new { topw = allw.Take(100) }, JsonRequestBehavior.AllowGet);
+
+
+        }
+
         public JsonResult Ustatus(int StravaID)
         {
             var DataContext = new DataClasses1DataContext();
