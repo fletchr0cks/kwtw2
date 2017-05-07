@@ -154,12 +154,13 @@ namespace kwtwsite.Controllers
             return Json(new { exp = exp.Count() }, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult TopW()
+        public JsonResult TopW(int stars)
         {
             var DataContext = new DataClasses1DataContext();
             var allw = from e in DataContext.TopWeathers
-                    //   where e.Timestamp > DateTime.Now.AddDays(-2) 
-                       orderby e.Stars descending, e.Timestamp descending
+                   // where e.Timestamp > DateTime.Now.AddDays(-14)
+                       where e.Stars == stars
+                       orderby e.Timestamp descending
                        select new
                        {
                            UserID = (from u in DataContext.Users where e.UserID == u.StravaID select u.Firstname.Substring(0, 1).ToLower()),
