@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -208,6 +208,22 @@ namespace kwtwsite.Controllers
             return Json(new { topw = allw.Take(100) }, JsonRequestBehavior.AllowGet);
 
 
+        }
+        
+        public JsonResult GetMsg(int StravaID)
+	        {
+	            var DataContext = new DataClasses1DataContext();
+	            var pr = from e in DataContext.Users
+	                     where e.StravaID == StravaID
+	                     select new
+	                     {
+	                         Msg = e.PaymentID
+	                         
+	
+	                     };
+	
+	            return Json(new { msgstr = pr }, JsonRequestBehavior.AllowGet);
+	
         }
 
         public JsonResult Ustatus(int StravaID)
