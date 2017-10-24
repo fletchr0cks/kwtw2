@@ -30,9 +30,6 @@ namespace kwtwsite.Models
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertView(View instance);
-    partial void UpdateView(View instance);
-    partial void DeleteView(View instance);
     partial void InsertSegment(Segment instance);
     partial void UpdateSegment(Segment instance);
     partial void DeleteSegment(Segment instance);
@@ -42,6 +39,9 @@ namespace kwtwsite.Models
     partial void InsertUser(User instance);
     partial void UpdateUser(User instance);
     partial void DeleteUser(User instance);
+    partial void InsertView(View instance);
+    partial void UpdateView(View instance);
+    partial void DeleteView(View instance);
     #endregion
 		
 		public DataClasses1DataContext() : 
@@ -74,14 +74,6 @@ namespace kwtwsite.Models
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<View> Views
-		{
-			get
-			{
-				return this.GetTable<View>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Segment> Segments
 		{
 			get
@@ -105,138 +97,12 @@ namespace kwtwsite.Models
 				return this.GetTable<User>();
 			}
 		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Views")]
-	public partial class View : INotifyPropertyChanging, INotifyPropertyChanged
-	{
 		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _VID;
-		
-		private System.Nullable<int> _SegID;
-		
-		private System.Nullable<int> _Timestamp;
-		
-		private System.Nullable<int> _UserID;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnVIDChanging(int value);
-    partial void OnVIDChanged();
-    partial void OnSegIDChanging(System.Nullable<int> value);
-    partial void OnSegIDChanged();
-    partial void OnTimestampChanging(System.Nullable<int> value);
-    partial void OnTimestampChanged();
-    partial void OnUserIDChanging(System.Nullable<int> value);
-    partial void OnUserIDChanged();
-    #endregion
-		
-		public View()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int VID
+		public System.Data.Linq.Table<View> Views
 		{
 			get
 			{
-				return this._VID;
-			}
-			set
-			{
-				if ((this._VID != value))
-				{
-					this.OnVIDChanging(value);
-					this.SendPropertyChanging();
-					this._VID = value;
-					this.SendPropertyChanged("VID");
-					this.OnVIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SegID", DbType="Int")]
-		public System.Nullable<int> SegID
-		{
-			get
-			{
-				return this._SegID;
-			}
-			set
-			{
-				if ((this._SegID != value))
-				{
-					this.OnSegIDChanging(value);
-					this.SendPropertyChanging();
-					this._SegID = value;
-					this.SendPropertyChanged("SegID");
-					this.OnSegIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Timestamp", DbType="Int")]
-		public System.Nullable<int> Timestamp
-		{
-			get
-			{
-				return this._Timestamp;
-			}
-			set
-			{
-				if ((this._Timestamp != value))
-				{
-					this.OnTimestampChanging(value);
-					this.SendPropertyChanging();
-					this._Timestamp = value;
-					this.SendPropertyChanged("Timestamp");
-					this.OnTimestampChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserID", DbType="Int")]
-		public System.Nullable<int> UserID
-		{
-			get
-			{
-				return this._UserID;
-			}
-			set
-			{
-				if ((this._UserID != value))
-				{
-					this.OnUserIDChanging(value);
-					this.SendPropertyChanging();
-					this._UserID = value;
-					this.SendPropertyChanged("UserID");
-					this.OnUserIDChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+				return this.GetTable<View>();
 			}
 		}
 	}
@@ -1266,6 +1132,140 @@ namespace kwtwsite.Models
 					this._PaymentDate = value;
 					this.SendPropertyChanged("PaymentDate");
 					this.OnPaymentDateChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Views")]
+	public partial class View : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _VID;
+		
+		private System.Nullable<int> _SegID;
+		
+		private System.Nullable<int> _Timestamp;
+		
+		private System.Nullable<int> _UserID;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnVIDChanging(int value);
+    partial void OnVIDChanged();
+    partial void OnSegIDChanging(System.Nullable<int> value);
+    partial void OnSegIDChanged();
+    partial void OnTimestampChanging(System.Nullable<int> value);
+    partial void OnTimestampChanged();
+    partial void OnUserIDChanging(System.Nullable<int> value);
+    partial void OnUserIDChanged();
+    #endregion
+		
+		public View()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int VID
+		{
+			get
+			{
+				return this._VID;
+			}
+			set
+			{
+				if ((this._VID != value))
+				{
+					this.OnVIDChanging(value);
+					this.SendPropertyChanging();
+					this._VID = value;
+					this.SendPropertyChanged("VID");
+					this.OnVIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SegID", DbType="Int")]
+		public System.Nullable<int> SegID
+		{
+			get
+			{
+				return this._SegID;
+			}
+			set
+			{
+				if ((this._SegID != value))
+				{
+					this.OnSegIDChanging(value);
+					this.SendPropertyChanging();
+					this._SegID = value;
+					this.SendPropertyChanged("SegID");
+					this.OnSegIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Timestamp", DbType="Int")]
+		public System.Nullable<int> Timestamp
+		{
+			get
+			{
+				return this._Timestamp;
+			}
+			set
+			{
+				if ((this._Timestamp != value))
+				{
+					this.OnTimestampChanging(value);
+					this.SendPropertyChanging();
+					this._Timestamp = value;
+					this.SendPropertyChanged("Timestamp");
+					this.OnTimestampChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserID", DbType="Int")]
+		public System.Nullable<int> UserID
+		{
+			get
+			{
+				return this._UserID;
+			}
+			set
+			{
+				if ((this._UserID != value))
+				{
+					this.OnUserIDChanging(value);
+					this.SendPropertyChanging();
+					this._UserID = value;
+					this.SendPropertyChanged("UserID");
+					this.OnUserIDChanged();
 				}
 			}
 		}

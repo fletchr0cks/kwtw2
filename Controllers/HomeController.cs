@@ -58,6 +58,11 @@ namespace kwtwsite.Controllers
             return View();
         }
 
+        public ActionResult fw()
+        {
+            return View();
+        }
+
         public ActionResult Dash()
         {
             var DataContext = new DataClasses1DataContext();
