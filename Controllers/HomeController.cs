@@ -60,7 +60,7 @@ namespace kwtwsite.Controllers
 
         public ActionResult fw()
         {
-            return View();
+            return View("fw");
         }
 
         public ActionResult Dash()
