@@ -28,6 +28,7 @@
     <TargetFrameworkProfile />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">.\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -308,6 +309,7 @@
     <Content Include="Views\Home\Thanks.cshtml" />
     <Content Include="Views\Home\Thanks2.cshtml" />
     <Content Include="Views\Home\fw.cshtml" />
+    <Content Include="Views\Home\fwd.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -26,6 +26,11 @@ namespace kwtwsite.Controllers
             return View();
         }
 
+        public ActionResult fwd()
+        {
+            return View();
+        }
+
         public ActionResult Terms()
         {
             return View();
