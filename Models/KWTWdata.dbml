@@ -1,5 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="db96bccf3def02407592bda59e000bc2b9" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="WebSettings" ConnectionString="Data Source=96bccf3d-ef02-4075-92bd-a59e000bc2b9.sqlserver.sequelizer.com;Initial Catalog=db96bccf3def02407592bda59e000bc2b9;Persist Security Info=True;User ID=nyndondnthbiaoze" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="db96bccf3def02407592bda59e000bc2b9ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Views" Member="Views">
+    <Type Name="View">
+      <Column Name="VID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SegID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Timestamp" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.Segments" Member="Segments">
     <Type Name="Segment">
       <Column Name="SID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -49,14 +57,6 @@
       <Column Name="LastRefresh" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
       <Column Name="PaymentID" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="PaymentDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Views" Member="Views">
-    <Type Name="View">
-      <Column Name="VID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="SegID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Timestamp" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
 </Database>

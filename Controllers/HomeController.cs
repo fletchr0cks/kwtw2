@@ -26,11 +26,6 @@ namespace kwtwsite.Controllers
             return View();
         }
 
-        public ActionResult fwd()
-        {
-            return View();
-        }
-
         public ActionResult Terms()
         {
             return View();
@@ -61,11 +56,6 @@ namespace kwtwsite.Controllers
         public ActionResult Tweet()
         {
             return View();
-        }
-
-        public ActionResult fw()
-        {
-            return View("fw");
         }
 
         public ActionResult Dash()

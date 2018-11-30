@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="2" virtualPath="/Views/Account/ConfirmEmail.cshtml" hash="fffffffffce50572" filehash="10ba4442745d" flags="110000" assembly="App_Web_xjkhbqpn" type="ASP._Page_Views_Account_ConfirmEmail_cshtml">
+    <filedeps>
+        <filedep name="/Views/Account/ConfirmEmail.cshtml" />
+    </filedeps>
+</preserve>
