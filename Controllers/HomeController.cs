@@ -379,7 +379,7 @@ namespace kwtwsite.Controllers
                 sc.Credits = newcredit;
                
                 db.SubmitChanges();
-
+//
 
         }
 
